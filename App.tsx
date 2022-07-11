@@ -9,10 +9,11 @@ import {
   View,
 } from 'react-native';
 
-import feed from './feed.json';
 import {format} from 'date-fns';
 import Icon from 'react-native-vector-icons/EvilIcons';
 import {FlashList} from '@shopify/flash-list';
+import feed from './feed.json';
+import {Tweet} from './Tweet';
 
 const textStyle = {color: '#444'};
 const iconStyle = {paddingRight: 5, color: '#444'};
