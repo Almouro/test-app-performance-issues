@@ -7,7 +7,7 @@ const Tab = createMaterialTopTabNavigator();
 
 export const Tabs = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={{lazy: true}}>
       <Tab.Screen name="Tweets" component={TweetsTab} />
       <Tab.Screen name="Likes" component={LikesTab} />
       <Tab.Screen name="Media" component={MediaTab} />
