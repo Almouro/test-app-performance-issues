@@ -8,14 +8,19 @@ import {AnimatedReactNativeEU} from '../components/AnimatedReactNativeEU';
 import {useFeed} from '../feed/useFeed';
 import {FastCountdown} from '../components/FastCountdown/FastCountdown';
 
-const UserHeader = ({user}: any) => (
-  <View style={{flexDirection: 'row', padding: 10}}>
-    <Text style={{color: 'black'}}>
-      {user?.tweetCount} Tweets from{' '}
-      <Text style={{fontWeight: 'bold'}}>{user?.name} 👇</Text>
-    </Text>
-  </View>
-);
+const UserHeader = () => {
+  const {data: user} = useQuery('user', getUser);
+  const {data: userStats} = useQuery('useStats', getUserStats);
+
+  return (
+    <View style={{flexDirection: 'row', padding: 10}}>
+      <Text style={{color: 'black'}}>
+        {user?.tweetCount} Tweets from{' '}
+        <Text style={{fontWeight: 'bold'}}>{user?.name} 👇</Text>
+      </Text>
+    </View>
+  );
+};
 
 const ReactNativeEUBanner = () => {
   return (
@@ -51,12 +56,10 @@ const ReactNativeEUBanner = () => {
 
 export const TweetsTab = () => {
   const feed = useFeed();
-  const {data: user} = useQuery('user', getUser);
-  const {data: userStats} = useQuery('useStats', getUserStats);
 
   return (
     <>
-      <UserHeader user={user} stats={userStats} />
+      <UserHeader />
       <ListContainer style={{flex: 1, backgroundColor: 'white'}}>
         <TweetList feed={feed} />
       </ListContainer>
