@@ -32,12 +32,47 @@ const CountdownItem = ({value, text}: {value: string; text: string}) => (
   </View>
 );
 
+const ReactNativeEUBanner = () => {
+  const [days, hours, minutes, seconds] = useCountdown(REACT_NATIVE_EU_DATE);
+
+  return (
+    <View style={{flexDirection: 'row', backgroundColor: 'black'}}>
+      <AnimatedReactNativeEU />
+      <View
+        style={{
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: 10,
+        }}>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+          }}>
+          <CountdownItem value={days} text="Days" />
+          <CountdownItem value={hours} text="Hours" />
+          <CountdownItem value={minutes} text="Min" />
+          <CountdownItem value={seconds} text="Sec" />
+        </View>
+
+        <Text
+          style={{
+            color: 'rgb(219, 44, 70)',
+            fontWeight: '600',
+            marginTop: 10,
+          }}>
+          {' '}
+          to React Native EU 🚀
+        </Text>
+      </View>
+    </View>
+  );
+};
+
 export const TweetsTab = () => {
   const feed = useFeed();
   const {data: user} = useQuery('user', getUser);
   const {data: userStats} = useQuery('useStats', getUserStats);
-
-  const [days, hours, minutes, seconds] = useCountdown(REACT_NATIVE_EU_DATE);
 
   return (
     <>
@@ -45,36 +80,7 @@ export const TweetsTab = () => {
       <ListContainer style={{flex: 1, backgroundColor: 'white'}}>
         <TweetList feed={feed} />
       </ListContainer>
-      <View style={{flexDirection: 'row', backgroundColor: 'black'}}>
-        <AnimatedReactNativeEU />
-        <View
-          style={{
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: 10,
-          }}>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-            }}>
-            <CountdownItem value={days} text="Days" />
-            <CountdownItem value={hours} text="Hours" />
-            <CountdownItem value={minutes} text="Min" />
-            <CountdownItem value={seconds} text="Sec" />
-          </View>
-
-          <Text
-            style={{
-              color: 'rgb(219, 44, 70)',
-              fontWeight: '600',
-              marginTop: 10,
-            }}>
-            {' '}
-            to React Native EU 🚀
-          </Text>
-        </View>
-      </View>
+      <ReactNativeEUBanner />
     </>
   );
 };
