@@ -1,13 +1,17 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {FlatList, View} from 'react-native';
 import {Feed, Tweet} from '../Tweet';
 import {TweetItem} from './TweetItem';
 
-const ItemSeparatorComponent = () => (
+const ItemSeparatorComponent = memo(() => (
   <View style={{height: 1, backgroundColor: '#eee', marginVertical: 10}} />
-);
+));
 
-const renderItem = ({item}: {item: Tweet}) => <TweetItem tweet={item} />;
+const MemoizedTweetItem = memo(TweetItem);
+
+const renderItem = ({item}: {item: Tweet}) => (
+  <MemoizedTweetItem tweet={item} />
+);
 const keyExtractor = ({id}: Tweet) => id;
 
 export const TweetList = ({feed}: {feed: Feed}) => {
