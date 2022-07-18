@@ -1,12 +1,12 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
 import {useQuery} from 'react-query';
 import {getUser, getUserStats} from '../Api';
 import {ListContainer} from '../ListContainer';
 import {TweetList} from '../components/TweetList';
-import {useCountdown} from './useCountdown';
 import {AnimatedReactNativeEU} from '../components/AnimatedReactNativeEU';
 import {useFeed} from '../feed/useFeed';
+import {FastCountdown} from '../components/FastCountdown/FastCountdown';
 
 const UserHeader = ({user}: any) => (
   <View style={{flexDirection: 'row', padding: 10}}>
@@ -17,24 +17,7 @@ const UserHeader = ({user}: any) => (
   </View>
 );
 
-const REACT_NATIVE_EU_DATE = '2022-09-01T08:00:00.000Z';
-
-const styles = StyleSheet.create({
-  container: {width: 50, alignItems: 'center'},
-  value: {color: 'white', fontWeight: 'bold', fontSize: 20},
-  text: {color: 'white'},
-});
-
-const CountdownItem = ({value, text}: {value: string; text: string}) => (
-  <View style={styles.container}>
-    <Text style={styles.value}>{value}</Text>
-    <Text style={styles.text}>{text}</Text>
-  </View>
-);
-
 const ReactNativeEUBanner = () => {
-  const [days, hours, minutes, seconds] = useCountdown(REACT_NATIVE_EU_DATE);
-
   return (
     <View style={{flexDirection: 'row', backgroundColor: 'black'}}>
       <AnimatedReactNativeEU />
@@ -49,10 +32,7 @@ const ReactNativeEUBanner = () => {
             flexDirection: 'row',
             justifyContent: 'center',
           }}>
-          <CountdownItem value={days} text="Days" />
-          <CountdownItem value={hours} text="Hours" />
-          <CountdownItem value={minutes} text="Min" />
-          <CountdownItem value={seconds} text="Sec" />
+          <FastCountdown />
         </View>
 
         <Text
