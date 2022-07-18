@@ -1,18 +1,9 @@
-import React, {memo, useState} from 'react';
-import {View} from 'react-native';
-import WebView from 'react-native-webview';
-import {getBannerUri} from '../Api';
+import React, {memo} from 'react';
+import {Image} from 'react-native';
 
-export const AnimatedReactNativeEU = memo(() => {
-  const [show, setShow] = useState(false);
-  return (
-    <View style={{height: 100, width: 100}}>
-      <WebView
-        onLoadEnd={() => setShow(true)}
-        source={{uri: getBannerUri()}}
-        scrollEnabled={false}
-        style={{opacity: show ? 1 : 0}}
-      />
-    </View>
-  );
-});
+export const AnimatedReactNativeEU = memo(() => (
+  <Image
+    style={{height: 100, width: 100}}
+    source={require('./animation.gif')}
+  />
+));
