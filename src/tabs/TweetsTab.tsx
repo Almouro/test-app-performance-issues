@@ -2,7 +2,7 @@ import React from 'react';
 import {Text, View} from 'react-native';
 import {useQuery} from 'react-query';
 import {getUser, getUserStats} from '../Api';
-import {ListContainer} from '../ListContainer';
+import {ListContainer, SkeletonContainer} from '../ListContainer';
 import {TweetList} from '../components/TweetList';
 import {AnimatedReactNativeEU} from '../components/AnimatedReactNativeEU';
 import {useFeed} from '../feed/useFeed';
@@ -60,9 +60,9 @@ export const TweetsTab = () => {
   return (
     <>
       <UserHeader />
-      <ListContainer style={{flex: 1, backgroundColor: 'white'}}>
-        <TweetList feed={feed} />
-      </ListContainer>
+      <View style={{flex: 1, backgroundColor: 'white'}}>
+        {feed.isLoading ? <SkeletonContainer /> : <TweetList feed={feed} />}
+      </View>
       <ReactNativeEUBanner />
     </>
   );
