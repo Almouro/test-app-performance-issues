@@ -1,0 +1,19 @@
+diff --git a/node_modules/react-native-skeleton-placeholder/lib/SkeletonPlaceholder.js b/node_modules/react-native-skeleton-placeholder/lib/SkeletonPlaceholder.js
+index 3c35038..62fb4ff 100644
+--- a/node_modules/react-native-skeleton-placeholder/lib/SkeletonPlaceholder.js
++++ b/node_modules/react-native-skeleton-placeholder/lib/SkeletonPlaceholder.js
+@@ -49,12 +49,12 @@ function SkeletonPlaceholder({ children, backgroundColor = "#E1E9EE", speed = 80
+     }), [animatedValue]);
+     React.useEffect(() => {
+         if (speed > 0) {
+-            const loop = react_native_1.Animated.loop(react_native_1.Animated.timing(animatedValue, {
++            const loop = react_native_1.Animated.loop(react_native_1.Animated.sequence([react_native_1.Animated.timing(animatedValue, {
+                 toValue: 1,
+                 duration: speed,
+                 easing: react_native_1.Easing.ease,
+                 useNativeDriver: true,
+-            }));
++            }), react_native_1.Animated.delay(speed)]));
+             if ((layout === null || layout === void 0 ? void 0 : layout.width) && (layout === null || layout === void 0 ? void 0 : layout.height)) {
+                 loop.start();
+             }
