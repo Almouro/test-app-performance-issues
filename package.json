@@ -7,22 +7,42 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "postinstall": "patch-package"
   },
   "dependencies": {
-    "@shopify/flash-list": "^1.0.2",
+    "@react-native-masked-view/masked-view": "^0.2.7",
+    "@react-navigation/bottom-tabs": "^6.3.2",
+    "@react-navigation/material-top-tabs": "^6.2.2",
+    "@react-navigation/native": "^6.0.11",
+    "@react-navigation/native-stack": "^6.7.0",
+    "@shopify/flash-list": "^1.1.0",
     "@types/lodash": "^4.14.180",
     "date-fns": "^2.28.0",
+    "jotai": "^1.7.5",
     "react": "17.0.2",
     "react-native": "0.67.4",
     "react-native-fast-image": "^8.5.11",
     "react-native-flipper-performance-plugin": "^0.2.1",
-    "react-native-safe-area-context": "^4.2.4",
-    "react-native-vector-icons": "^9.1.0"
+    "react-native-gesture-handler": "^2.5.0",
+    "react-native-linear-gradient": "^2.6.2",
+    "react-native-pager-view": "^5.4.25",
+    "react-native-reanimated": "^2.9.1",
+    "react-native-safe-area-context": "^4.3.1",
+    "react-native-screens": "^3.15.0",
+    "react-native-skeleton-content-nonexpo": "^1.0.13",
+    "react-native-skeleton-placeholder": "^5.0.0",
+    "react-native-svg": "^12.4.0",
+    "react-native-tab-view": "^3.1.1",
+    "react-native-vector-icons": "^9.2.0",
+    "react-native-webview": "^11.22.7",
+    "react-query": "^3.39.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
+    "@perf-profiler/e2e": "^0.1.0-alpha.2",
+    "@perf-profiler/web-reporter": "^0.1.0-alpha.1",
     "@react-native-community/eslint-config": "^2.0.0",
     "@types/jest": "^26.0.23",
     "@types/react-native": "^0.66.15",
@@ -33,11 +53,14 @@
     "eslint": "^7.14.0",
     "jest": "^26.6.3",
     "metro-react-native-babel-preset": "^0.66.2",
+    "patch-package": "^6.4.7",
+    "postinstall-postinstall": "^2.1.0",
     "react-test-renderer": "17.0.2",
     "typescript": "^4.4.4"
   },
   "resolutions": {
-    "@types/react": "^17"
+    "@types/react": "^17",
+    "react-devtools-core": "4.24.3"
   },
   "jest": {
     "preset": "react-native",
